@@ -41,6 +41,7 @@ const CartProvider = ({ children }) => {
 				})
 				.filter(item => item.amount !== 0);
 			setInitialBasket(newCartItem);
+			setCartItem(0);
 		}
 	};
 
@@ -55,6 +56,7 @@ const CartProvider = ({ children }) => {
 	const removeCartItem = id => {
 		const newCartItems = initialBasket.filter(item => item.id !== id);
 		setInitialBasket(newCartItems);
+		setCartItem(0);
 	};
 	const calculateCartItemTotal = () => {
 		if (initialBasket.length) {
@@ -73,11 +75,13 @@ const CartProvider = ({ children }) => {
 	};
 	const clearCart = () => {
 		setInitialBasket([]);
+		setCartItem(0);
 	};
 	useEffect(() => {
 		localStorage.setItem('cartItem', JSON.stringify(initialBasket));
 		calculateCartItem();
 		calculateCartItemTotal();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [initialBasket]);
 	return (
 		<CartContext.Provider

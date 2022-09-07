@@ -7,7 +7,7 @@ const Navbar = () => {
 	const { cartItem } = useCartcontext();
 	return (
 		<nav>
-			<ReactTooltip />
+			<ReactTooltip place="bottom" />
 			<Link to="/">
 				<h1 className="heading" data-tip="Store">
 					shoe store
