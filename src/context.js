@@ -8,7 +8,7 @@ const CartProvider = ({ children }) => {
 		() => JSON.parse(localStorage.getItem('cartItem')) || []
 	);
 	const [cartItem, setCartItem] = useState(0);
-
+	const [cartTotal, setCartTotal] = useState(0);
 	const handleIncrement = id => {
 		const search = initialBasket.find(basket => basket.id === id);
 		if (search) {
@@ -52,10 +52,32 @@ const CartProvider = ({ children }) => {
 			setCartItem(total);
 		}
 	};
+	const removeCartItem = id => {
+		const newCartItems = initialBasket.filter(item => item.id !== id);
+		setInitialBasket(newCartItems);
+	};
+	const calculateCartItemTotal = () => {
+		if (initialBasket.length) {
+			const amount = initialBasket
+				.map(x => {
+					let { amount, id } = x;
+					let search = data.find(y => y.id === id) || [];
 
+					return amount * search.price;
+				})
+				.reduce((x, y) => x + y, 0);
+			setCartTotal(amount);
+		} else {
+			return;
+		}
+	};
+	const clearCart = () => {
+		setInitialBasket([]);
+	};
 	useEffect(() => {
-		calculateCartItem();
 		localStorage.setItem('cartItem', JSON.stringify(initialBasket));
+		calculateCartItem();
+		calculateCartItemTotal();
 	}, [initialBasket]);
 	return (
 		<CartContext.Provider
@@ -65,6 +87,9 @@ const CartProvider = ({ children }) => {
 				initialBasket,
 				handleDecrement,
 				cartItem,
+				removeCartItem,
+				cartTotal,
+				clearCart,
 			}}
 		>
 			{children}

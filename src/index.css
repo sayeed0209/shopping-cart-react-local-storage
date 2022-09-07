@@ -61,7 +61,7 @@ nav {
 }
 
 /* nav end here */
-product-section-heading {
+.product-section-heading {
   font-size: 2.5rem;
   text-transform: capitalize;
   background: -webkit-linear-gradient(#3866e2, rgb(68, 63, 63));
@@ -71,11 +71,7 @@ product-section-heading {
   margin-bottom: 2rem;
 }
 
-.cart-section {
-  width: 95vw;
-  margin: 20px auto;
 
-}
 
 .product-center {
   display: grid;
@@ -139,4 +135,112 @@ product-section-heading {
 
 a {
   text-decoration: none;
+}
+
+
+/* Cart page */
+
+
+.cart-center {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+  grid-gap: 0.5rem;
+  justify-items: center;
+  width: 95vw;
+  margin: auto;
+
+}
+
+.shoes-card {
+  max-width: 430px;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  padding: 1.5rem 1rem;
+  transition: all 0.3s linear;
+}
+
+.shoes-card:hover {
+  box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: .75rem;
+}
+
+.item-total {
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.cart-item-price {
+  background: #000000;
+  color: #fff;
+  padding: .5rem;
+  font-weight: 400;
+}
+
+.remove {
+  font-weight: 600;
+  color: #f14848;
+}
+
+.label {
+  text-align: center;
+}
+
+.total-amount {
+  font-size: 1.5rem;
+}
+
+.item-total {
+  font-size: 1.2rem;
+}
+
+.clear-cart {
+  background-color: #f14848;
+  color: #fff;
+  padding: .5rem;
+  border-radius: .25rem;
+  transition: all 0.3s linear;
+  margin-top: .5rem;
+}
+
+.clear-cart:hover,
+.back-home-btn:hover {
+  background-color: #3f3e3e
+}
+
+.back-home-btn {
+  display: inline-block;
+  background-color: #0c0c0c;
+  color: #fff;
+  padding: .5rem;
+  border-radius: .25rem;
+  transition: all 0.3s linear;
+
+}
+
+.cart-center h2 {
+  margin-top: 1rem;
+  text-transform: capitalize;
+}
+
+@media screen and (min-width: 800px) {
+  .cart-center {
+    padding: 1.5rem;
+    width: 40vw;
+  }
+
+}
+
+.cart-section {
+  width: 95vw;
+  margin: 5px;
+
 }
